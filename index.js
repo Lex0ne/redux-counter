@@ -1,11 +1,9 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import { ChatView } from './chat/index'
-
-const render = () => {
-    ReactDom.render(
-        <ChatView />,
-        document.getElementById('container')
-    );
-};
-render();
+function init() {
+    const node = document.getElementById('container');
+    require.ensure(['./app'], function (require) {
+        const { initApp } = require('./app');
+        initApp(node);
+    }, 'Counter');
+    return {};
+}
+init();
