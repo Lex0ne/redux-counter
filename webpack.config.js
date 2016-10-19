@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
@@ -21,5 +22,10 @@ module.exports = {
         loaders: ['babel']
       }
     ]
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    hot: true
   }
 };
