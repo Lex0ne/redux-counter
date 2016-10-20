@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    app: ['webpack/hot/dev-server' , './index.js']
+    app: './index.js',
   },
   output: {
     path: path.join(__dirname, 'public'),
@@ -19,13 +19,16 @@ module.exports = {
       {
         test:    /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel']
+        loader: 'babel',
+        include: __dirname,
+        query: {
+          presets: [ 'es2015', 'react']
+        }
       }
     ]
   },
-
   devServer: {
-    contentBase: path.join(__dirname, '/'),
-    hot: true
+    contentBase: __dirname,
+    hot: true,
   }
 };
